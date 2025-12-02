@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Users, User, DollarSign, Home } from 'lucide-react';
 
 const StatsSection = () => {
   const stats = [
-    { icon: Users, value: 759, label: 'Membres', suffix: '' },
-    { icon: User, value: 2, label: 'Pasteurs', suffix: '' },
-    { icon: DollarSign, value: 1000, label: 'Donations', suffix: '+' },
-    { icon: Home, value: 28, label: 'Églises dans le monde', suffix: '' }
+    { icon: Users, value: 759, label: 'Membres' },
+    { icon: User, value: 2, label: 'Pasteurs' },
+    { icon: DollarSign, value: 1000, label: 'Donations' },
+    { icon: Home, value: 28, label: 'Églises dans le monde' }
   ];
 
-  const countersRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const countersRef = useRef<HTMLSpanElement[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,7 +56,9 @@ const StatsSection = () => {
                 <stat.icon className="h-12 w-12" />
               </div>
               <span 
-                ref={el => countersRef.current[index] = el}
+                ref={(el) => {
+                  if (el) countersRef.current[index] = el;
+                }}
                 data-target={stat.value}
                 className="block text-4xl md:text-5xl font-bold mb-2"
               >
