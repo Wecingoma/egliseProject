@@ -15,7 +15,7 @@ import SermonsSection from '@/Composant/sections/SermonsSection';
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 4000,
+      duration: 1000,
       once: true,
     });
   }, []);
