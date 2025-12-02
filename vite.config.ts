@@ -12,16 +12,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false, // Désactiver pour production
-    minify: 'terser', // Minifier le code
+    minify: 'esbuild', // Minifier le code
     terserOptions: {
       compress: {
         drop_console: true, // Supprimer console.log
+        drop_debugger: true, // Supprimer debugger
       },
-    },
+    }as any,
   },
 })
-<<<<<<< Updated upstream
-=======
-
-*/
->>>>>>> Stashed changes

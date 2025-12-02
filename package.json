@@ -8,7 +8,14 @@
     "type": "git",
     "url": "https://github.com/Wecingoma/cite-de-refuge.git"
   },
-  "keywords": ["église", "react", "vite", "typescript", "rdc", "kinshasa"],
+  "keywords": [
+    "église",
+    "react",
+    "vite",
+    "typescript",
+    "rdc",
+    "kinshasa"
+  ],
   "author": "Votre Nom",
   "license": "MIT",
   "scripts": {
@@ -37,6 +44,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/aos": "^3.0.7",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
