@@ -5,7 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const HeroSection = () => {
   const slides = [
     {
-      image: '/images/68.jpg',
+      image: '/images/images/ensembler3.jpeg',
       title: 'Jésus-Christ où que nous soyons',
       subtitle: 'Cité de Refuge C.C./Kintambo',
       description: 'Jésus-Christ est fidèle hier, aujourd\'hui et demain.',
@@ -15,7 +15,27 @@ const HeroSection = () => {
       ]
     },
     {
-      image: '/images/IMG_1768.JPG',
+      image: '/images/images/ensembler2.jpeg',
+      title: 'Nous aimons Dieu, Nous croyons en Jésus-Christ',
+      subtitle: 'Cité de Refuge C.C./Kintambo',
+      description: 'Romains 10:8, Que dit-elle donc? la parole est près de toi, dans ta bouche et dans ton cœur.',
+      buttons: [
+        { label: 'Donation', href: '#donation' },
+        { label: 'Construction', href: '#construction' }
+      ]
+    },
+    {
+      image: '/images/images/ensembler1.jpeg',
+      title: 'Nous aimons Dieu, Nous croyons en Jésus-Christ',
+      subtitle: 'Cité de Refuge C.C./Kintambo',
+      description: 'Romains 10:8, Que dit-elle donc? la parole est près de toi, dans ta bouche et dans ton cœur.',
+      buttons: [
+        { label: 'Donation', href: '#donation' },
+        { label: 'Construction', href: '#construction' }
+      ]
+    },
+    {
+      image: '/images/images/ensembler.jpeg',
       title: 'Nous aimons Dieu, Nous croyons en Jésus-Christ',
       subtitle: 'Cité de Refuge C.C./Kintambo',
       description: 'Romains 10:8, Que dit-elle donc? la parole est près de toi, dans ta bouche et dans ton cœur.',
@@ -27,7 +47,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="pt-16">
+    <section id="home" className="pt-30">
       <Carousel className="w-full">
         <CarouselContent>
           {slides.map((slide, index) => (
@@ -45,8 +65,8 @@ const HeroSection = () => {
                     <h1 className="text-4xl md:text-6xl font-bold mb-6">
                       {slide.title}
                     </h1>
-                    <p className="text-xl mb-8">{slide.description}</p>
-                    <div className="flex flex-wrap gap-4">
+                    <p className="text-xl mb-2 mt-10">{slide.description}</p>
+                    {/* <div className="flex flex-wrap gap-4">
                       {slide.buttons.map((button, idx) => (
                         <Button
                           key={idx}
@@ -56,7 +76,7 @@ const HeroSection = () => {
                           {button.label}
                         </Button>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

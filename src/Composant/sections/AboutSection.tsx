@@ -16,7 +16,7 @@ const AboutSection = () => {
           {/* Image */}
           <div className="relative h-[500px] rounded-2xl overflow-hidden">
             <img
-              src="/images/Pasteur2.JPG"
+              src="/images/68.jpg"
               alt="Église Cité de Refuge"
               className="w-full h-full object-cover"
             />
