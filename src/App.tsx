@@ -26,7 +26,7 @@ function App() {
       <main>
         <HeroSection />
         <AboutSection />
-        <StatsSection />
+        {/* <StatsSection /> */}
         <DailyVerse />
         <ServicesSection />
         <SermonsSection />

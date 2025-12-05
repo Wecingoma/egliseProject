@@ -47,7 +47,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="pt-30">
+    <section id="home" className="pt-40">
       <Carousel className="w-full">
         <CarouselContent>
           {slides.map((slide, index) => (
