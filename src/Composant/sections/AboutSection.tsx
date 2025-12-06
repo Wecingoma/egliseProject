@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import Navbar from '../layout/Navbar';
 
 const AboutSection = () => {
   const beliefs = [
@@ -10,6 +11,9 @@ const AboutSection = () => {
   ];
 
   return (
+    <div>
+      <Navbar />
+    
     <section id="about" className="py-30 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -49,6 +53,7 @@ const AboutSection = () => {
         </div>
       </div>
     </section>
+    </div>
   );
 };
 

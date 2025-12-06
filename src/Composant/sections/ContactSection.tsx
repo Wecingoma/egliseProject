@@ -4,9 +4,12 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Globe } from 'lucide-react';
+import Navbar from '../layout/Navbar';
 
 const ContactSection = () => {
   return (
+    <div>
+      <Navbar />
     <section id="contact" className="py-40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
@@ -86,6 +89,7 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
+    </div>
   );
 };
 export default ContactSection;
