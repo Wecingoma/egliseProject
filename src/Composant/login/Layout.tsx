@@ -1,6 +1,6 @@
 'use client';
+import { useNavigate } from "react-router-dom";
 
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function AdminLayout({
@@ -8,7 +8,7 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
+  const router = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,8 @@ export default function AdminLayout({
     const checkAuth = () => {
       const token = localStorage.getItem('admin_token'); // ou sessionStorage/cookies
       if (!token) {
-        router.push('/login'); // Rediriger vers la page de connexion
+        // router.push('/login'); // Rediriger vers la page de connexion
+        router("/login");
       } else {
         setIsAuthenticated(true);
       }
