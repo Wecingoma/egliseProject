@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from "react-router-dom";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -8,9 +9,12 @@ import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 
 const ContactSection = () => {
+  const location = useLocation();
+  const showFooter = location.pathname === "/contact"; // condition
+
   return (
     <div>
-      <Navbar />
+      {showFooter && <Navbar />}
     <section id="contact" className="py-40">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
@@ -90,7 +94,7 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
-    <Footer />
+    {showFooter && <Footer />}
     </div>
   );
 };

@@ -1,10 +1,14 @@
 import React from 'react';
+import { useLocation } from "react-router-dom";
 import { CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
 
 const AboutSection = () => {
+  const location = useLocation();
+  const showFooter = location.pathname === "/about"; // condition
+
   const beliefs = [
     "Nous croyons en la Bible, Parole inspirée de Dieu, infaillible et suffisante",
     "Nous croyons en un seul Dieu existant éternellement en trois personnes",
@@ -13,8 +17,7 @@ const AboutSection = () => {
 
   return (
     <div>
-      <Navbar />
-    
+      {showFooter && <Navbar />}
     <section id="about" className="py-30 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -54,7 +57,7 @@ const AboutSection = () => {
         </div>
       </div>
     </section>
-    <Footer />
+    {showFooter && <Footer />}
     </div>
   );
 };
