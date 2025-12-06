@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AdminPage from '@/Composant/Admin/AdminPage';
 import LoginPage from '@/Composant/login/LoginPage';
 import ProtectedRoute from '@/Composant/login/protectionRoute/ProtectedRoute';
+import EventsPage from './Composant/sections/EventsPage';
 
 // ------------------ PAGE D'ACCUEIL ------------------
 
@@ -68,7 +69,7 @@ function App() {
       
         {/* Pages simples */}
         <Route path="/about" element={<AboutSection />} />
-        <Route path="/events" element={<div>Page Événements</div>} />
+        <Route path="/events" element={<EventsPage />} />
         <Route path="/contact" element={<ContactSection />} />
       </Routes>
     </Router>
