@@ -11,6 +11,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Label } from '@/components/ui/label';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -91,8 +92,6 @@ const AdminPage = () => {
   return (
     <section>
         <Navbar/>
-      
-    
     <div className="min-h-screen bg-gray-50 pt-35 pb-10">
       <div className="container mx-auto px-4">
         {/* En-tête Admin */}
@@ -309,7 +308,9 @@ const AdminPage = () => {
         </Tabs>
       </div>
     </div>
+    <Footer />
     </section>
+    
   );
 };
 

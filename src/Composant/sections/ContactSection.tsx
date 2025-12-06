@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Globe } from 'lucide-react';
 import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 
 const ContactSection = () => {
   return (
@@ -89,6 +90,7 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
+    <Footer />
     </div>
   );
 };

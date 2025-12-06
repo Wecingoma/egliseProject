@@ -2,6 +2,7 @@ import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
 
 const AboutSection = () => {
   const beliefs = [
@@ -53,6 +54,7 @@ const AboutSection = () => {
         </div>
       </div>
     </section>
+    <Footer />
     </div>
   );
 };
