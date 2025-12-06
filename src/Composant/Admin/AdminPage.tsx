@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { toast } from "sonner";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -59,47 +60,51 @@ const AdminPage = () => {
   };
 
   const handleUpload = async () => {
-    if (selectedFiles.length === 0) {
-      setMessage({ type: 'error', text: 'Veuillez sélectionner au moins une photo' });
-      return;
-    }
+  if (selectedFiles.length === 0) {
+    toast.error("Aucune photo sélectionnée", {
+      description: "Veuillez choisir au moins une photo avant de publier.",
+    });
+    return;
+  }
 
-    // Validation event fields when category is "events"
-    if (category === 'events' && (!eventDate || !eventTime || !eventLocation)) {
-      setMessage({
-        type: 'error',
-        text: 'Complétez les informations de l’événement avant de publier.'
+  if (category === "events" && (!eventDate || !eventTime || !eventLocation)) {
+    toast.error("Informations manquantes", {
+      description: "Veuillez compléter tous les champs de l’événement.",
+    });
+    setShowEventModal(true);
+    return;
+  }
+
+  toast.loading("Publication en cours...");
+
+  setIsUploading(true);
+
+  try {
+    setTimeout(() => {
+      toast.dismiss(); // enlève le loading
+      toast.success("Publication réussie 🎉", {
+        description: `${selectedFiles.length} photo(s) publiée(s) avec succès !`,
       });
-      setShowEventModal(true);
-      return;
-    }
 
-    setIsUploading(true);
-
-    try {
-      setTimeout(() => {
-        setMessage({
-          type: 'success',
-          text: `${selectedFiles.length} photo(s) publiée(s) avec succès !`
-        });
-
-        // Reset form
-        setSelectedFiles([]);
-        setPreviews([]);
-        setPhotoTitle('');
-        setPhotoDescription('');
-        setEventDate('');
-        setEventTime('');
-        setEventLocation('');
-
-        setIsUploading(false);
-      }, 1500);
-
-    } catch (error) {
-      setMessage({ type: 'error', text: 'Erreur lors de l\'upload' });
+      setSelectedFiles([]);
+      setPreviews([]);
+      setPhotoTitle('');
+      setPhotoDescription('');
+      setEventDate('');
+      setEventTime('');
+      setEventLocation('');
       setIsUploading(false);
-    }
-  };
+    }, 1500);
+
+  } catch (error) {
+    toast.dismiss();
+    toast.error("Erreur lors de la publication", {
+      description: "Une erreur inattendue est survenue.",
+    });
+    setIsUploading(false);
+  }
+};
+
 
   const handleLogout = () => {
     localStorage.removeItem('admin_token');

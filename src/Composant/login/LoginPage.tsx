@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-// import { toast } from "react-hot-toast";
 import { toast } from "sonner";
 
 export default function LoginPage() {
