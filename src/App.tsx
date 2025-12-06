@@ -19,6 +19,7 @@ import AdminPage from '@/Composant/Admin/AdminPage';
 import LoginPage from '@/Composant/login/LoginPage';
 import ProtectedRoute from '@/Composant/login/protectionRoute/ProtectedRoute';
 import EventsPage from './Composant/sections/EventsPage';
+import EventDetailPage from './Composant/sections/EventDetailPage';
 
 // ------------------ PAGE D'ACCUEIL ------------------
 
@@ -71,6 +72,8 @@ function App() {
         <Route path="/about" element={<AboutSection />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/contact" element={<ContactSection />} />
+        <Route path="/events/:id" element={<EventDetailPage />} />
+
       </Routes>
     </Router>
   );

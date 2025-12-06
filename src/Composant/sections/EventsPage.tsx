@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Calendar, MapPin, Clock, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
@@ -95,9 +96,13 @@ const EventsPage = () => {
                   </div>
                 </div>
 
-                <button className="mt-4 w-full flex items-center justify-center gap-2 text-primary font-medium hover:underline">
-                  Voir les détails <ChevronRight className="h-4 w-4" />
-                </button>
+                <Link 
+                to={`/events/${event.id}`} 
+                className="mt-4 w-full flex items-center justify-center gap-2 text-primary font-medium hover:underline"
+                >
+                Voir les détails 
+                <ChevronRight className="h-4 w-4" />
+                </Link>
               </CardContent>
             </Card>
           ))}

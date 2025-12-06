@@ -55,7 +55,7 @@ const HeroSection = () => {
   const slide = slides[index];
 
   return (
-    <section id="home" className="pt-40 relative h-[600px] overflow-hidden">
+    <section id="home" className="pt-60 relative h-[600px] overflow-hidden">
 
       <AnimatePresence mode="wait">
         <motion.div
