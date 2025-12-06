@@ -91,15 +91,21 @@ const AdminPage = () => {
 
   return (
     <section>
-        <Navbar/>
-    <div className="min-h-screen bg-gray-50 pt-35 pb-10">
-      <div className="container mx-auto px-4">
+  <Navbar />
+  
+  <div className="min-h-screen bg-gray-50 pt-32 pb-20">
+    <div className="container mx-auto px-4">
+
+      {/* Conteneur centré */}
+      <div className="max-w-4xl mx-auto">
+
         {/* En-tête Admin */}
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-10">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Administration</h1>
-            <p className="text-gray-600">Gestion des photos et contenu</p>
+            <p className="text-gray-600">Gestion des photos et du contenu</p>
           </div>
+
           <Button 
             variant="outline" 
             onClick={handleLogout}
@@ -110,37 +116,48 @@ const AdminPage = () => {
           </Button>
         </div>
 
+        {/* Message de succès / erreur */}
         {message && (
-          <Alert className={`mb-6 ${message.type === 'success' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
-            <AlertDescription className={message.type === 'success' ? 'text-green-800' : 'text-red-800'}>
+          <Alert className={`mb-6 ${
+            message.type === 'success'
+              ? 'bg-green-50 border-green-200'
+              : 'bg-red-50 border-red-200'
+          }`}>
+            <AlertDescription className={
+              message.type === 'success' ? 'text-green-800' : 'text-red-800'
+            }>
               {message.text}
             </AlertDescription>
           </Alert>
         )}
 
         <Tabs defaultValue="upload" className="space-y-6">
-          <TabsList className="grid w-full md:w-auto grid-cols-2">
+          <TabsList className="w-full md:w-auto grid grid-cols-2 mx-auto mb-4">
             <TabsTrigger value="upload">Publier des photos</TabsTrigger>
             <TabsTrigger value="manage">Gérer les photos</TabsTrigger>
           </TabsList>
 
           {/* Onglet Upload */}
           <TabsContent value="upload">
-            <Card>
+            <Card className="max-w-3xl mx-auto">
               <CardHeader>
                 <CardTitle>Publier de nouvelles photos</CardTitle>
                 <CardDescription>
                   Ajoutez des photos pour partager avec la communauté
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Informations de la photo */}
-                <div className="space-y-4">
+
+              <CardContent className="space-y-8">
+
+                {/* Formulaire centré */}
+                <div className="space-y-6">
+
                   <div>
-                    <Label htmlFor="title">Titre des photos</Label>
+                    <Label htmlFor="title">Titre</Label>
                     <Input
                       id="title"
-                      placeholder="Ex: Culte du dimanche 15 janvier"
+                      className="mt-1"
+                      placeholder="Ex: Culte du dimanche"
                       value={photoTitle}
                       onChange={(e) => setPhotoTitle(e.target.value)}
                     />
@@ -150,8 +167,9 @@ const AdminPage = () => {
                     <Label htmlFor="description">Description</Label>
                     <Textarea
                       id="description"
-                      placeholder="Description des photos..."
                       rows={3}
+                      className="mt-1"
+                      placeholder="Décrivez les photos..."
                       value={photoDescription}
                       onChange={(e) => setPhotoDescription(e.target.value)}
                     />
@@ -161,7 +179,7 @@ const AdminPage = () => {
                     <Label htmlFor="category">Catégorie</Label>
                     <select
                       id="category"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
                     >
@@ -172,16 +190,20 @@ const AdminPage = () => {
                       ))}
                     </select>
                   </div>
+
                 </div>
 
-                {/* Zone de téléchargement */}
+                {/* Upload zone */}
                 <div className="space-y-4">
                   <Label>Photos à publier</Label>
+
                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                    <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+                    <Upload className="mx-auto h-12 w-12 text-gray-400 mb-3" />
+
                     <p className="text-gray-600 mb-2">
-                      Glissez-déposez vos photos ou cliquez pour sélectionner
+                      Glissez vos photos ici ou cliquez pour sélectionner
                     </p>
+
                     <Input
                       type="file"
                       accept="image/*"
@@ -190,15 +212,17 @@ const AdminPage = () => {
                       id="photo-upload"
                       onChange={handleFileSelect}
                     />
+
                     <Button
                       variant="outline"
-                      onClick={() => document.getElementById('photo-upload')?.click()}
+                      onClick={() => document.getElementById("photo-upload")?.click()}
                     >
                       <ImageIcon className="mr-2 h-4 w-4" />
                       Sélectionner des photos
                     </Button>
+
                     <p className="text-sm text-gray-500 mt-2">
-                      Formats supportés: JPG, PNG, WebP (Max 5MB par photo)
+                      Formats supportés: JPG, PNG, WebP — Max 5MB
                     </p>
                   </div>
 
@@ -208,20 +232,22 @@ const AdminPage = () => {
                       <h3 className="font-medium mb-4">
                         {selectedFiles.length} photo(s) sélectionnée(s)
                       </h3>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                         {previews.map((preview, index) => (
                           <div key={index} className="relative group">
                             <img
                               src={preview}
-                              alt={`Preview ${index}`}
-                              className="w-full h-48 object-cover rounded-lg"
+                              className="w-full h-40 object-cover rounded-lg shadow-sm"
                             />
+
                             <button
                               onClick={() => removeFile(index)}
-                              className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                              className="absolute top-2 right-2 bg-red-600 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition"
                             >
                               <Trash2 size={16} />
                             </button>
+
                             <div className="text-xs text-gray-500 mt-1 truncate">
                               {selectedFiles[index].name}
                             </div>
@@ -237,10 +263,10 @@ const AdminPage = () => {
                   <Button
                     onClick={handleUpload}
                     disabled={isUploading || selectedFiles.length === 0}
-                    className="w-full md:w-auto"
+                    className="w-full md:w-auto px-6 py-3"
                   >
                     {isUploading ? (
-                      <>Publication en cours...</>
+                      <span>Publication en cours...</span>
                     ) : (
                       <>
                         <Save className="mr-2 h-4 w-4" />
@@ -249,36 +275,37 @@ const AdminPage = () => {
                     )}
                   </Button>
                 </div>
+
               </CardContent>
             </Card>
           </TabsContent>
 
           {/* Onglet Gestion */}
           <TabsContent value="manage">
-            <Card>
+            <Card className="max-w-4xl mx-auto">
               <CardHeader>
                 <CardTitle>Photos publiées</CardTitle>
-                <CardDescription>
-                  Gérez les photos existantes
-                </CardDescription>
+                <CardDescription>Gérez les photos existantes</CardDescription>
               </CardHeader>
+
               <CardContent>
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left py-3 px-4">ID</th>
-                        <th className="text-left py-3 px-4">Titre</th>
-                        <th className="text-left py-3 px-4">Catégorie</th>
-                        <th className="text-left py-3 px-4">Date</th>
-                        <th className="text-left py-3 px-4">Actions</th>
+                        <th className="py-3 px-4 text-left">ID</th>
+                        <th className="py-3 px-4 text-left">Titre</th>
+                        <th className="py-3 px-4 text-left">Catégorie</th>
+                        <th className="py-3 px-4 text-left">Date</th>
+                        <th className="py-3 px-4 text-left">Actions</th>
                       </tr>
                     </thead>
+
                     <tbody>
                       {existingPhotos.map((photo) => (
                         <tr key={photo.id} className="border-b hover:bg-gray-50">
                           <td className="py-3 px-4">{photo.id}</td>
-                          <td className="py-3 px-4 font-medium">{photo.title}</td>
+                          <td className="py-3 px-4">{photo.title}</td>
                           <td className="py-3 px-4">
                             <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
                               {categories.find(c => c.value === photo.category)?.label}
@@ -288,12 +315,10 @@ const AdminPage = () => {
                           <td className="py-3 px-4">
                             <div className="flex gap-2">
                               <Button size="sm" variant="outline">
-                                <Eye size={14} className="mr-1" />
-                                Voir
+                                <Eye size={14} className="mr-1" /> Voir
                               </Button>
                               <Button size="sm" variant="destructive">
-                                <Trash2 size={14} className="mr-1" />
-                                Supprimer
+                                <Trash2 size={14} className="mr-1" /> Supprimer
                               </Button>
                             </div>
                           </td>
@@ -305,12 +330,16 @@ const AdminPage = () => {
               </CardContent>
             </Card>
           </TabsContent>
+
         </Tabs>
+
       </div>
     </div>
-    <Footer />
-    </section>
-    
+  </div>
+
+  <Footer />
+</section>
+
   );
 };
 
