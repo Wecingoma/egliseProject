@@ -217,6 +217,8 @@ const AdminPage = () => {
                         <Button
                           variant="outline"
                           onClick={() => document.getElementById("photo-upload")?.click()}
+                          className="w-full md:w-auto text-black bg-gray-200 hover:bg-gray-300"
+
                         >
                           <ImageIcon className="mr-2 h-4 w-4" /> Sélectionner
                         </Button>
@@ -240,18 +242,21 @@ const AdminPage = () => {
                       )}
                     </div>
 
-                    {/* BUTTON SUBMIT */}
                     <Button
                       onClick={handleUpload}
                       disabled={isUploading || selectedFiles.length === 0}
-                      className="w-full md:w-auto"
+                      className="w-full md:w-auto text-black bg-gray-200 hover:bg-gray-300"
+
                     >
-                      {isUploading ? "Publication..." : (
+                      {isUploading ? (
+                        "Publication..."
+                      ) : (
                         <>
                           <Save className="mr-2 h-4 w-4" /> Publier
                         </>
                       )}
                     </Button>
+
 
                   </CardContent>
                 </Card>
@@ -284,8 +289,8 @@ const AdminPage = () => {
                               <td>{photo.category}</td>
                               <td>{photo.date}</td>
                               <td>
-                                <Button size="sm" variant="outline"><Eye size={14} /></Button>
-                                <Button size="sm" variant="destructive"><Trash2 size={14} /></Button>
+                                <Button size="sm" variant="outline" className="w-full md:w-auto text-black bg-gray-200 hover:bg-gray-300"><Eye size={14} /></Button>
+                                <Button size="sm" variant="destructive" className="w-full md:w-auto text-black bg-gray-200 hover:bg-gray-300"><Trash2 size={14} /></Button>
                               </td>
                             </tr>
                           ))}
@@ -344,6 +349,8 @@ const AdminPage = () => {
                   setShowEventModal(false);
                   setMessage({ type: "success", text: "Événement enregistré !" });
                 }}
+                className="w-full md:w-auto text-black bg-gray-200 hover:bg-gray-300"
+
               >
                 Enregistrer
               </Button>
